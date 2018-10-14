@@ -1,5 +1,7 @@
 package ru.mail.technotrack.mainui.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -43,7 +45,8 @@ class MainFragment : Fragment() {
             "RelativeLayout",
             "ConstraintLayout",
             "Widgets",
-            "Start Activity for result"
+            "Start Activity for result",
+            "Open Mail.ru"
         )
     }
 
@@ -54,7 +57,15 @@ class MainFragment : Fragment() {
         3 -> router.navigateTo { getLayoutFragment(R.layout.constraint_layout) }
         4 -> router.navigateTo (fragmentFactory = ::WidgetsFragment)
         5 -> router.navigateTo (fragmentFactory = ::ActivityResultFragment)
+        6 -> launchBrowser()
         else -> throw IllegalStateException()
+    }
+
+    private fun launchBrowser() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        intent.data = Uri.parse("http://mail.ru")
+        startActivity(intent)
     }
 }
 
