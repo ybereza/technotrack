@@ -1,7 +1,7 @@
 package ru.mail.technotrack.mainui.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +16,7 @@ class LayoutFragment : Fragment() {
         val args = arguments
         args?.run {
             val layout = getInt(LAYOUT_KEY)
-            return inflater.inflate(layout, null)
+            return inflater.inflate(layout, container, false)
         }
         throw IllegalStateException("There must be layout!!!")
     }

@@ -3,8 +3,8 @@ package ru.mail.technotrack.mainui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.callable_activity.*
 
 class CallableActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class CallableActivity : AppCompatActivity() {
         setContentView(R.layout.callable_activity)
 
         val text = intent.getStringExtra("text")
-        findViewById<TextView>(R.id.textview).text = "I was called with text $text"
+        textview.text = "I was called with text $text"
 
         val i = Intent()
         i.putExtra("text", "Text from Callable Activity")
