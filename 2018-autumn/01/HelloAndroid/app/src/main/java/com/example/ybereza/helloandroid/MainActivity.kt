@@ -12,5 +12,6 @@ class  MainActivity : AppCompatActivity() {
 
         val text = findViewById<TextView>(R.id.text)
         text.text = greetingFromTechnotrack()
+        simpleLoopUtil()
     }
 }

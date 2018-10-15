@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         router = Router(this, R.id.fragment_container)
-        router.navigateTo(false, ::MainFragment)
+        if (savedInstanceState == null) router.navigateTo(false, ::MainFragment)
     }
 
     override fun onBackPressed() {
