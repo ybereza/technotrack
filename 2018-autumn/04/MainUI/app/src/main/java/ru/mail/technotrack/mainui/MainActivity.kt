@@ -2,6 +2,7 @@ package ru.mail.technotrack.mainui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import ru.mail.technotrack.mainui.fragments.MainFragment
 
 class MainActivity : AppCompatActivity() {

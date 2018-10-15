@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.start_activity.*
 import ru.mail.technotrack.mainui.CallableActivity
+import ru.mail.technotrack.mainui.MainApplication
 import ru.mail.technotrack.mainui.R
 import ru.mail.technotrack.mainui.createIntent
 
@@ -22,6 +23,7 @@ class ActivityResultFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         savedInstanceState?.run {
+            //defaultText = MainApplication.instance.fragmentStateHolder.text
             defaultText = getString("SAVED_TEXT_STATE") ?: ""
         }
     }
@@ -44,6 +46,7 @@ class ActivityResultFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 12345 && resultCode == Activity.RESULT_OK) {
             defaultText =  data?.getStringExtra("text") ?: ""
+            //MainApplication.instance.fragmentStateHolder.text = defaultText
             textview.text = defaultText
         }
     }
