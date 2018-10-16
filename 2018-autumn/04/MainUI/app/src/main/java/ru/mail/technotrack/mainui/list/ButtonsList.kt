@@ -9,10 +9,8 @@ import android.view.LayoutInflater
 
 class ButtonsListAdapter(private val names : Array<String>, private val onClick : (Int) -> Unit) : RecyclerView.Adapter<ButtonHolder>() {
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ButtonHolder {
-        val rootView = LayoutInflater.from(viewGroup.context).inflate(R.layout.button_layout, null, false)
+        val rootView = LayoutInflater.from(viewGroup.context).inflate(R.layout.button_layout, viewGroup, false)
         val button : Button = rootView.findViewById(R.id.button)
-        val lp = RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-        rootView.layoutParams = lp
         return ButtonHolder(rootView, button, onClick)
     }
 

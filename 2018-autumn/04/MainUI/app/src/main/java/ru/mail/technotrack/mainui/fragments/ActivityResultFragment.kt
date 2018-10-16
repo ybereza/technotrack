@@ -22,8 +22,8 @@ class ActivityResultFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //defaultText = MainApplication.instance.fragmentStateHolder.text
         savedInstanceState?.run {
-            //defaultText = MainApplication.instance.fragmentStateHolder.text
             defaultText = getString("SAVED_TEXT_STATE") ?: ""
         }
     }

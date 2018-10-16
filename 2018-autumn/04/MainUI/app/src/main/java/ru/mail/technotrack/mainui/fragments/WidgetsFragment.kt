@@ -31,13 +31,13 @@ class WidgetsFragment : Fragment() {
         return root
     }
 
-    override fun onStart() {
+    override fun onResume() {
         timer.start()
-        super.onStart()
+        super.onResume()
     }
 
-    override fun onStop() {
+    override fun onPause() {
         timer.cancel()
-        super.onStop()
+        super.onPause()
     }
 }
