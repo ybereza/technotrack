@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data
-                        android:scheme="http"
+                        android:scheme="https"
                         android:host="track.mail.ru"
                         android:pathPattern="/android"/>
             </intent-filter>
