@@ -46,7 +46,8 @@ class MainFragment : Fragment() {
             "ConstraintLayout",
             "Widgets",
             "Start Activity for result",
-            "Open Mail.ru"
+            "Open Mail.ru",
+            "Open Technotrack"
         )
     }
 
@@ -58,7 +59,15 @@ class MainFragment : Fragment() {
         4 -> router.navigateTo (fragmentFactory = ::WidgetsFragment)
         5 -> router.navigateTo (fragmentFactory = ::ActivityResultFragment)
         6 -> launchBrowser()
+        7 -> openTechnoTrack()
         else -> throw IllegalStateException()
+    }
+
+    private fun openTechnoTrack() {
+        val intent = Intent()
+        intent.action = Intent.ACTION_VIEW
+        intent.data = Uri.parse("https://track.mail.ru/android")
+        startActivity(intent)
     }
 
     private fun launchBrowser() {
@@ -67,12 +76,13 @@ class MainFragment : Fragment() {
         intent.data = Uri.parse("http://mail.ru")
         startActivity(intent)
     }
+
+    private fun getLayoutFragment(layout : Int) : Fragment {
+        val fragment = LayoutFragment()
+        val args = Bundle()
+        args.putInt(LayoutFragment.LAYOUT_KEY, layout)
+        fragment.arguments = args
+        return fragment
+    }
 }
 
-fun getLayoutFragment(layout : Int) : Fragment {
-    val fragment = LayoutFragment()
-    val args = Bundle()
-    args.putInt(LayoutFragment.LAYOUT_KEY, layout)
-    fragment.arguments = args
-    return fragment
-}
