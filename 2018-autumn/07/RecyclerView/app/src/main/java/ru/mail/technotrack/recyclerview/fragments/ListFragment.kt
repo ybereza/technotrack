@@ -44,7 +44,6 @@ class ListFragment : Fragment() {
             LIST -> createSimpleList(recycler)
             CLICKABLE_LIST -> createClickableList(recycler)
             PAGES -> createPageList(recycler)
-            INNER_LIST -> createInnerList(recycler)
         }
 
         return layout
@@ -84,9 +83,5 @@ class ListFragment : Fragment() {
 
         PagerSnapHelper().attachToRecyclerView(recycler)
         recycler.adapter = PageAdapter()
-    }
-
-    private fun createInnerList(recycler: RecyclerView) {
-
     }
 }
