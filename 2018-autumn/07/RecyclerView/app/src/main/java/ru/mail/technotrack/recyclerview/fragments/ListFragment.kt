@@ -13,7 +13,7 @@ import ru.mail.technotrack.recyclerview.adapters.SimpleListAdapter
 
 class ListFragment : Fragment() {
     companion object {
-        private const val STYLE_KEY = "LAYOUT_KEY"
+        private const val STYLE_KEY = "STYLE_KEY"
 
         fun createListFragment(style : Int) : Fragment {
             val fragment = ListFragment()

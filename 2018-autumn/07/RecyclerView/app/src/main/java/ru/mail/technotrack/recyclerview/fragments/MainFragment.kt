@@ -40,7 +40,7 @@ class MainFragment : Fragment() {
             "Simple List",
             "Clickable List",
             "Pages",
-            "Inner List"
+            "Create notification"
         )
     }
 
@@ -48,7 +48,11 @@ class MainFragment : Fragment() {
         0 -> router.navigateTo { ListFragment.createListFragment(LIST) }
         1 -> router.navigateTo { ListFragment.createListFragment(CLICKABLE_LIST) }
         2 -> router.navigateTo { ListFragment.createListFragment(PAGES) }
-        3 -> router.navigateTo { ListFragment.createListFragment(INNER_LIST) }
+        3 -> createNotification()
         else -> throw IllegalStateException()
+    }
+
+    private fun createNotification() {
+        createSimpleNotification(requireContext())
     }
 }
