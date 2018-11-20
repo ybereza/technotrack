@@ -11,17 +11,15 @@ import android.widget.EditText
 import android.widget.ListView
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemClickListener {
-    private lateinit var dbHelper: DBHelper
-    private lateinit var listAdapter: ListAdapter
+    private lateinit var model: Model
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        dbHelper = DBHelper(this)
-        val listView = findViewById<ListView>(R.id.list)
-        listAdapter = ListAdapter(dbHelper)
-        listView.adapter = listAdapter
+        model = Model(this)
+        val listView : ListView = findViewById(R.id.list)
+        listView.adapter = model.createAdapter()
         listView.onItemClickListener = this
 
         findViewById<View>(R.id.add).setOnClickListener(this)
@@ -40,8 +38,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
     }
 
     private fun removeLastValue() {
-        dbHelper.removeLast()
-        listAdapter.notifyDataSetChanged()
+        model.removeLast()
     }
 
     private fun addNewValue() {
@@ -56,8 +53,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
 
         alertDialog.setPositiveButton(R.string.ok) { dialog, which ->
             val value = text.text.toString()
-            dbHelper.addValue(value)
-            listAdapter.notifyDataSetChanged()
+            model.addValue(value)
         }
 
         alertDialog.show()
@@ -72,15 +68,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnIt
         val text = v.findViewById<View>(R.id.edit_text) as EditText
         alertDialog.setView(v)
 
-        val value = dbHelper.getValue(pos + 1)
+        val value = model.text(pos)
         if (value != null) {
             text.setText(value)
         }
 
         alertDialog.setPositiveButton(R.string.ok) { dialog, which ->
             val value = text.text.toString()
-            dbHelper.editValue(pos + 1, value)
-            listAdapter.notifyDataSetChanged()
+            model.editValue(pos, value)
         }
 
         alertDialog.show()

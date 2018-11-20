@@ -14,16 +14,16 @@ class DBHelper(context: Context,
                factory: SQLiteDatabase.CursorFactory = Factory(),
                version: Int = DB_VER) : SQLiteOpenHelper(context, name, factory, version) {
 
-    val count: Int
+    val count: Long
         get() {
             val db = readableDatabase
             val regionQuery = "select Count(*) as count from test"
-            var result = 0
+            var result : Long = 0
             db?.use {
                 val cur = it.rawQuery(regionQuery, arrayOf<String>())
                 cur?.use {
                     it.moveToFirst()
-                    result = it.getInt(it.getColumnIndexOrThrow("count"))
+                    result = it.getLong(it.getColumnIndexOrThrow("count"))
                 }
             }
             return result
@@ -90,6 +90,6 @@ class DBHelper(context: Context,
         val DB_NAME = "values"
         val DB_VER = 1
 
-        private val CREATE_DB = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT, value TEXT);"
+        private val CREATE_DB = "CREATE TABLE test (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, value TEXT NOT NULL);"
     }
 }

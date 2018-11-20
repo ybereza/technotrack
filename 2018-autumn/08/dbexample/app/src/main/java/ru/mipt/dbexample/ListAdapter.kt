@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 
-class ListAdapter(private val dbHelper: DBHelper) : BaseAdapter() {
+class ListAdapter(private val model: Model) : BaseAdapter() {
     override fun getCount(): Int {
-        return dbHelper.count
+        return model.size().toInt()
     }
 
     override fun getItem(i: Int): Any? {
@@ -26,7 +26,7 @@ class ListAdapter(private val dbHelper: DBHelper) : BaseAdapter() {
                     R.layout.list_item, viewGroup, false)
         }
 
-        val text = dbHelper.getValue(i + 1)
+        val text = model.text(i)
         val textView = convertedView?.findViewById<TextView>(R.id.text)
         textView?.text = text ?: ""
 
