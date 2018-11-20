@@ -1,14 +1,11 @@
 package ru.mail.techotrack.lection9
 
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentTransaction
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class MainActivity : FragmentActivity() {
 
-    private var _listFragment: ListFragment? = null
+    private lateinit var _listFragment: ListFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +19,7 @@ class MainActivity : FragmentActivity() {
         val frag = supportFragmentManager.findFragmentById(R.id.main_fragment)
         if (frag == null) {
             val ft = supportFragmentManager.beginTransaction()
-            ft.add(R.id.main_fragment, _listFragment!!)
+            ft.add(R.id.main_fragment, _listFragment)
             ft.commit()
         }
     }

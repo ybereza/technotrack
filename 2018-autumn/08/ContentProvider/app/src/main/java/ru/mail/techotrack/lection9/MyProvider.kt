@@ -12,9 +12,6 @@ import android.net.Uri
 import android.text.TextUtils
 import android.util.Log
 
-/**
- * Created by vlad on 14/04/16.
- */
 class MyProvider : ContentProvider() {
 
     private val LOG_TAG = "myLogs"

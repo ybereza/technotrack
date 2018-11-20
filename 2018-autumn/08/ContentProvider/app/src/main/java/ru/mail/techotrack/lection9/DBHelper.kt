@@ -1,18 +1,12 @@
 package ru.mail.techotrack.lection9
 
-import android.app.Application
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
-import android.database.DatabaseErrorHandler
 import android.database.DatabaseUtils
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import ru.mail.techotrack.lection9.DBHelper.Companion.DT_NAME
 
-/**
- * Created by vlad on 14/04/16.
- */
 class DBHelper(private val context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
 
     val size: Long

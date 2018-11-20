@@ -18,9 +18,6 @@ import androidx.core.view.ViewCompat
 import android.widget.Button
 import android.widget.ListView
 
-/**
- * Created by vlad on 14/04/16.
- */
 class ListFragment : Fragment() {
 
     internal val LOG_TAG = "myLogs"
@@ -35,11 +32,11 @@ class ListFragment : Fragment() {
         val root = inflater.inflate(R.layout.list_fragment, container, false) ?: return null
 
         val cursor = requireActivity().contentResolver.query(CONTACT_URI, null, null, null, null)
-        activity!!.startManagingCursor(cursor)
+        requireActivity().startManagingCursor(cursor)
 
         val from = arrayOf("name", "email")
         val to = intArrayOf(android.R.id.text1, android.R.id.text2)
-        val adapter = SimpleCursorAdapter(context!!, android.R.layout.simple_list_item_2, cursor, from, to)
+        val adapter = SimpleCursorAdapter(requireContext(), android.R.layout.simple_list_item_2, cursor, from, to)
 
         val lvContact = root.findViewById<View>(R.id.lvContact) as ListView
         lvContact.adapter = adapter
