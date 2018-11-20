@@ -31,7 +31,7 @@ interface ValuesDao {
 }
 
 
-@Database(entities = [Value::class], version = 1)
+@Database(entities = [Value::class], version = 2)
 abstract class ValuesDatabase : RoomDatabase() {
     abstract fun valuesDao(): ValuesDao
 
@@ -46,7 +46,9 @@ abstract class ValuesDatabase : RoomDatabase() {
             }
             return INSTANCE
         }
-        fun destroyDataBase(){
+
+        fun closeDatabase(){
+            INSTANCE?.close()
             INSTANCE = null
         }
     }
