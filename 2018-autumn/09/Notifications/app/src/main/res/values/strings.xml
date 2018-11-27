@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lection14</string>
+    <string name="send_notification_1">Send simple notification</string>
+    <string name="send_notification_2">Send group notification</string>
+    <string name="send_notification_3">Send notification with action</string>
+    <string name="send_notification_4">Send progress notification</string>
+    <string name="send_notification_5">Send with channel</string>
+</resources>

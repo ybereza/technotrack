@@ -11,7 +11,6 @@ class ScrollingActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        super.onStart()
         val frag = supportFragmentManager.findFragmentById(R.id.main_fragment)
         if (frag == null) {
             supportFragmentManager.beginTransaction()
