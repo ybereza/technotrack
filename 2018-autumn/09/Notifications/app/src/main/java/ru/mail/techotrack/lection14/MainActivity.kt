@@ -15,6 +15,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.NotificationCompat
 import android.widget.Button
+import android.widget.RemoteViews
 import kotlinx.coroutines.*
 
 import java.util.ArrayList
@@ -233,7 +234,33 @@ class MainActivity : Activity() {
     }
 
     private fun crateCustomNotification() {
-        //TODO
+        val contentIntent = getHelperActivity(this, 1)
+
+        val title = "Это custom нотификация!"
+        val msg = "$count - Пора уже таки покормить рыбок, они почти сдохли, это специально длинный текст такой чтобы не влезло"
+        count++
+
+        val rv = RemoteViews(getPackageName(), R.layout.custom_notification)
+        rv.setTextViewText(R.id.title, title)
+        rv.setTextViewText(R.id.text, msg)
+
+        val builder = NotificationCompat.Builder(this, getChannelId("my_channel_id", "My default Channel", "my_group_id", "My default Group"))
+        builder.setContentIntent(contentIntent)
+                .setSmallIcon(R.drawable.technotrack_24)
+                .setTicker("Last china warning")
+                .setAutoCancel(true)
+                .setCustomContentView(rv)
+
+        var defaults = 0
+        defaults = defaults or Notification.DEFAULT_VIBRATE
+        defaults = defaults or Notification.DEFAULT_SOUND
+
+        builder.setDefaults(defaults)
+
+        val nc = builder.build()
+
+        val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        nm.notify(10, nc)
     }
 
     companion object {
