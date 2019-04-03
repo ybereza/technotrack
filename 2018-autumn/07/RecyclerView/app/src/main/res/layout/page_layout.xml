@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:card_view="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-              android:padding="16dp"
+              android:padding="20dp"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
             card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="10dp"
             card_view:cardBackgroundColor="@android:color/holo_blue_dark"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
