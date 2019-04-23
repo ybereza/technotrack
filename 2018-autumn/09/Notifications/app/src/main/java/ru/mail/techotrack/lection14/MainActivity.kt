@@ -73,7 +73,7 @@ class MainActivity : Activity() {
 
     private fun createGroupNotification() {
         val contentIntent = getHelperActivity(this, 2)
-        val msg = "$count - Пока уже таки покормить рыбок, они почти сдохли, это специально длинный текст такой чтобы не влезло"
+        val msg = "$count - Пора уже таки покормить рыбок, они почти сдохли, это специально длинный текст такой чтобы не влезло"
         count++
         messages.add(msg)
 
@@ -152,17 +152,17 @@ class MainActivity : Activity() {
     }
 
     private fun getChannelId(channelId: String, name: String, groupId: String, groupName: String) : String {
-        return when (Build.VERSION.SDK_INT) {
-            Build.VERSION_CODES.O -> getChannelIdInternal(channelId, name, groupId, groupName)
-            else ->  ""
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return getChannelIdInternal(channelId, name, groupId, groupName)
         }
+        return ""
     }
 
     private fun getNotificationChannelGroupId(groupId: String, name: String): String {
-        return when (Build.VERSION.SDK_INT) {
-            Build.VERSION_CODES.O -> getNotificationChannelGroupIdInternal(groupId, name)
-            else ->  ""
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return getNotificationChannelGroupIdInternal(groupId, name)
         }
+        return ""
     }
 
     @TargetApi(Build.VERSION_CODES.O)
